@@ -1,4 +1,4 @@
-from aiohttp.client_exceptions import ClientConnectorError
+from aiohttp.client_exceptions import ClientConnectorError,ContentTypeError
 from time import strftime,localtime
 from os import makedirs
 from os.path import join
@@ -23,7 +23,7 @@ async def moddownloadline(fileinfo:list,session,gamename:str = 'Minecraft',categ
         }
         for i in range(config['RELOAD_TIMES']):
             try:
-                async with session.get( config['SEARCH_MOD_ID_BASE_URL'], params=params, proxy=config['PROXY'] ) as response:
+                async with session.get( config['SEARCH_MOD_ID_BASE_URL'], params=params, proxy= config['PROXY'] ) as response:
                     js = await response.json()
                     assert js['pagination']['totalCount'] > 0,"未找到这个mod"
                     return str(js['data'][0]['id'])
@@ -41,6 +41,7 @@ async def moddownloadline(fileinfo:list,session,gamename:str = 'Minecraft',categ
             "sortDescending": 1,
             "gameVersionId": config['gameVersionIds'].get(gameVersionId),
             "gameFlavorId": config['gameFlavorIds'].get(gameFlavorId),
+            'removeAlphas': config['removeAlphas'],
         }
         for i in range(config['RELOAD_TIMES']):
             try:
@@ -71,8 +72,11 @@ async def moddownloadline(fileinfo:list,session,gamename:str = 'Minecraft',categ
     except IndexError as e:
         print(f'{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[31m下载失败 {slug} {gameVersionId} {gameFlavorId}（没有该版本）\033[36m')
         return [f'失败（没有该版本）',modid]
+    except ContentTypeError as e:
+        print(f'{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[31m下载失败 {slug} {gameVersionId} {gameFlavorId}（代理配置无效）\033[36m')
+        return [f'失败（代理配置无效）',slug]
     except Exception as e:
-        print(f'{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[31m下载失败 {slug} {gameVersionId} {gameFlavorId}（{e}）\033[36m')
+        print(f'{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[31m下载失败 {slug} {gameVersionId} {gameFlavorId}（{type(e).__name__}:{e}）\033[36m')
         return [f'失败（{e}）',modid]
     else:
         return ['成功',filename]
