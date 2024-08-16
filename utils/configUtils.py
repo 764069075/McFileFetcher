@@ -17,7 +17,9 @@ defaultConfig = '''
 
 ### 基础常量
 # 代理地址(不启用设置为:"",启用需输入字符串地址,例:"http://localhost:7890")
-PROXY = "http://localhost:7890"
+# 国内必须配置代理
+# 国外配置可选
+PROXY = ""
 # 文件流大小/byte(越大下载越快，但是占用内存高)
 CHUNK_SIZE = 1024
 # 模组保存目录
