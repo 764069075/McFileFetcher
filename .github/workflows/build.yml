@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@latest
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@latest
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11.9'
 
@@ -34,7 +34,7 @@ jobs:
           pyinstaller --onefile --upx-dir "C:\tools\upx" McFileFetcher.py
 
       - name: Upload EXE artifact
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v4
         with:
           name: McFileFetcher1.1.0
           path: dist/McFileFetcher.exe
