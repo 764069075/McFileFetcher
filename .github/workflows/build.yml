@@ -25,10 +25,11 @@ jobs:
 
       - name: Build EXE with PyInstaller
         run: |
-          pyinstaller --onefile --distpath dist McFileFetcher.py
+          pyinstaller --onefile McFileFetcher.py
 
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v3
         with:
           name: McFileFetcher110
-          path: dist/McFileFetcher110.exe
+          path: dist/McFileFetcher.exe
+
