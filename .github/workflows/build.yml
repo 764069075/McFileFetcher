@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11.10'  # 替换为你的Python版本，例如 '3.9'
+          python-version: '3.11.9'
 
       - name: Install dependencies
         run: |
