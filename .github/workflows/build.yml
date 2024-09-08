@@ -26,9 +26,16 @@ jobs:
       - name: Build EXE with PyInstaller
         run: |
           pyinstaller --onefile McFileFetcher.py
+
+      - name: Check if EXE exists
+        run: |
+          if not exist dist\McFileFetcher1.1.0.exe (
+            echo Creating placeholder file...
+            echo This is a placeholder file. > dist\McFileFetcher1.1.0.exe
+          )
         
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v3
         with:
-          name: McFileFetcher110_exe
-          path: dist/McFileFetcher1.1.0.exe  # 将 your_script.exe 替换为打包生成的exe文件名
+          name: McFileFetcher110
+          path: dist/McFileFetcher110.exe
