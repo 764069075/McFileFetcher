@@ -7,23 +7,26 @@ configFileName = 'config.toml'
 defaultConfig = '''
 ##### 配置文件 #####
 
-######################################
+#################################################
 # 文件损坏或内容错误不记得改回
-# 直接删除本文件，重新运行程序即可
-# 如果盆友你有相关编程兴趣爱好
-# 本程序已经尽作者可能的做了模块化开发
-# 欢迎随时提供相关功能代码改进丰富本程序
-######################################
+# 删除本文件，重新运行程序即可
+# 程序已做了模块化开发
+# 欢迎随时提供相关功能代码改进丰富本程序，github主页
+# https://github.com/764069075/McFileFetcher
+# 请遵循MIT协议，仅供学习参考，一切后果本人概不负责
+#################################################
 
 ### 基础常量
-# 代理地址(不启用设置为:"",启用需输入字符串地址,例:"http://localhost:7890")
-# 国内必须配置代理
-# 国外配置可选
+# 代理地址(不启用设置为:"",启用需输入字符串地址,例:"http://localhost:7890")国内必须配置代理，国外可选
 PROXY = ""
-# 文件流大小/byte(越大下载越快，但是占用内存高)
+# 查询排序方式(所有方式见下方排序表)
+SORT_FIELD = "Relevancy"
+# 查询排除测试版(true/false)
+removeAlphas = "false"
+# 文件流大小/byte(越大下载越快，但是内存占用高)
 CHUNK_SIZE = 1024
 # 模组保存目录
-MOD_SAVE_DIR = "downloaded_mods"
+MOD_SAVE_DIR = "Downloaded"
 # 中断重连次数
 RELOAD_TIMES = 3
 # 每次重连间隔/s
@@ -31,22 +34,21 @@ RELOAD_INTERVAL = 1
 # 时间显示格式
 TIME_FORMATE = "%H:%M:%S"
 # 待下载文件信息表存放路径与名称
-WAIT_TO_DOWN_FILE_NAME = "待下载文件表.csv"
+WAIT_TO_DOWN_FILE_NAME = "./待下载文件.csv"
 # 文件下载结果表存放路径与名称
-DOWN_STATE_FILE_NAME = "文件下载结果表.csv"
-# 查询排序方式(见下方排序表)
-SORT_FIELD = "Relevancy"
-# 查询排除测试版(true/false)
-removeAlphas = "false"
-
-# 输出文本前缀(未实现)
-PRINT_PREFIX = ""
-# 输出文本后缀(未实现)
-PRINT_SUFFIX = ""
+DOWN_STATE_FILE_NAME = "./下载结果汇总表.csv"
+# 待下载文件信息表表头
+DOWN_FILE_HEADER = ['游戏名(例 minecraft)', '文件类型(例 mod/shader/resourcepack 等)','英文名(例 jei)', '版本(例 1.18.2/1.16.5/1.12.2)', '文件环境(例 neoforge/forge/fabric)']
+# 文件下载结果表表头
+DOWN_STATE_FILE_HEADER = ['游戏名', '文件类型', '英文名', '版本', '文件环境', '下载结果', '对应文件名/Id']
+# 输出文本前缀
+PRINT_PREFIX = "😊 "
+# 输出文本后缀
+PRINT_SUFFIX = " ⚡"
 
 
 ### 接口链接常量(请勿轻易修改)
-# 查询MODID接口
+# 查询类别接口
 SEARCH_MOD_ID_BASE_URL = "https://www.curseforge.com/api/v1/mods/search"
 # 查询MOD版本文件接口
 SEARCH_MOD_FILE_BASE_URL = "https://www.curseforge.com/api/v1/mods"
@@ -59,20 +61,20 @@ DOWNLOAD_BASE_URL = "https://mediafilez.forgecdn.net/files"
 # 需要在对应栏目添加相关版本和id
 # 游戏表
 [gameIds]
-'Minecraft' = 432
+'minecraft' = 432
 'The Sims 4' = 78062
 
 # 类别表
 [categories]
-'Shaders' = 6552
-'mods' = 6
-'Modpacks' = 4471
-'Customization' = 4546
-'Data Packs' = 6945
-'Addons' = 4559
-'Bukkit Plugins' = 5
-'Resource Packs' = 12
-'Worlds' = 17
+'shader' = 6552
+'mod' = 6
+'modpack' = 4471
+'customization' = 4546
+'datapack' = 6945
+'addon' = 4559
+'bukkitplugin' = 5
+'resourcepack' = 12
+'world' = 17
 
 # 排序表
 [sortFields]
@@ -85,9 +87,9 @@ DOWNLOAD_BASE_URL = "https://mediafilez.forgecdn.net/files"
 
 # mod环境表
 [gameFlavorIds]
-'Forge' = 1
-'Fabric' = 4
-'NeoForge' = 6
+'forge' = 1
+'fabric' = 4
+'neoforge' = 6
 
 # 游戏版本表
 [gameVersionIds]
@@ -120,6 +122,8 @@ DOWNLOAD_BASE_URL = "https://mediafilez.forgecdn.net/files"
 '1.8.9' = 5806
 '1.8.8' = 5703
 '1.8' = 4455
+'optifine' = 10191
+'iris' = 10192
 '''
 
 def saveconfig():

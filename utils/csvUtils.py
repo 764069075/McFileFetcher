@@ -1,17 +1,18 @@
 from csv import writer,reader
 from os.path import exists,abspath
 from os import startfile,system
+from utils.configUtils import config
 
 
 def readcsv(waitToDownFileName):
-    print(f'开始读取 {waitToDownFileName}')
+    print(f'\033[36m开始读取 {waitToDownFileName}')
     if exists(waitToDownFileName):
         with open(waitToDownFileName, 'r') as f:
-            fileinfos = list(reader(f))
-        if len(fileinfos) > 1:
-            length = len(fileinfos) - 1
-            print(f'\033[32m已读取 {length} 个文件信息，即将开始下载\033[0m')
-            return fileinfos[1:],length
+            fileinfos = [row for row in reader(f) if ''.join(map(str,row)).strip() and '游戏名' not in row[0]]
+        if len(fileinfos) > 0:
+            length = len(fileinfos)
+            print(f'\033[32m已读取 {length} 个文件信息，即将开始下载')
+            return fileinfos,length
         else:
             print('未能从csv读取到数据')
     else:
@@ -24,21 +25,30 @@ def createcsv(waitToDownFileName):
 
     with open(waitToDownFileName, 'w', newline='') as f:
         w = writer(f)
-        w.writerow(['英文名(例 jei)', '版本(例 1.18.2/1.16.5/1.12.2)', '文件环境(例 NeoForge/Forge/Fabric)'])
+        w.writerow(config['DOWN_FILE_HEADER'])
 
     startfile(abspath(waitToDownFileName))
-    print(f'\033[32m程序已暂停，请前往 {waitToDownFileName} 文件中按照格式填写文件信息（区分大小写）。\033[0m')
+    print(f'\033[32m程序已暂停，请前往 {waitToDownFileName} 文件中按照格式填写文件信息（区分大小写）。')
     system('pause')
     return readcsv(waitToDownFileName)
 
 
 def resultcsv(downStateFileName,results,waste,success,length,fileinfos):
+    for i in range(config['RELOAD_TIMES']):
+        try:
+            with open(downStateFileName,'w',newline='')as f:
+                w = writer(f)
+                w.writerow(config['DOWN_STATE_FILE_HEADER'])
+                w.writerows([i+k for i,k in zip(fileinfos,results)])
+                w.writerow([f'下载耗时 {waste:.2f}秒 成功 {success} 失败 {length-success}'])
+        except PermissionError:
+            print(f'\033[31m导出失败：\033[36m在导出文件 {downStateFileName} 时，发现该文件未关闭。\033[33m按任意键重新导出')
+            system('pause')
+            continue
+        except Exception as e:
+            print(f'\033[31m导出失败：\033[36m在导出文件 {downStateFileName} 时，发现未知错误（{e}）。\033[33m按任意键重新导出')
+            system('pause')
+            continue
     
-    with open(downStateFileName,'w',newline='')as f:
-        w = writer(f)
-        w.writerow(['英文名', '版本', '文件环境', '下载结果', '对应文件名/Id'])
-        w.writerows([i+k for i,k in zip(fileinfos,results)])
-        w.writerow([f'下载耗时 {waste:.2f}秒 成功 {success} 失败 {length-success}'])
-    
-    print(f'所有文件下载信息已导出到同目录文件 {downStateFileName}\033[0m')
+    print(f'\033[36m所有文件下载信息已导出到文件 \033[33m{downStateFileName}')
     startfile(abspath(downStateFileName))
