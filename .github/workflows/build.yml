@@ -31,7 +31,7 @@ jobs:
         run: |
           if not exist dist\McFileFetcher1.1.0.exe (
             echo Creating placeholder file...
-            echo This is a placeholder file. > dist\McFileFetcher1.1.0.exe
+            echo This is a placeholder file. > dist\McFileFetcher110.exe
           )
         
       - name: Upload EXE artifact
