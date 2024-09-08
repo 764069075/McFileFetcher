@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -31,7 +31,7 @@ jobs:
           
       - name: Build EXE with PyInstaller
         run: |
-          pyinstaller --onefile --upx-dir C:\tools\upx McFileFetcher.py
+          pyinstaller --onefile --upx-dir "C:\tools\upx" McFileFetcher.py
 
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v3
