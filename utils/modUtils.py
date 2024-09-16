@@ -1,9 +1,10 @@
 from aiohttp.client_exceptions import ClientConnectorError,ContentTypeError
 from time import strftime,localtime
-from os.path import join
+from os.path import join,isfile
 from asyncio import sleep
 from aiofiles import open as aopen
 from utils.configUtils import config
+from utils.fileUtils import getfilemd5
 
 
 # mod下载流水线函数
@@ -26,7 +27,7 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
                     assert js['pagination']['totalCount'] > 0,f"未找到这个{category}"
                     return str(js['data'][0]['id'])
             except ClientConnectorError:
-                print(f'{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[33m下载时断开 \033[36m{slug} {gameVersionId} {gameFlavorId} 重连中...次数{i+1}\033[0m')
+                print(f'\033[36m{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[33m下载时断开 \033[36m{slug} {gameVersionId} {gameFlavorId} 重连中...次数{i+1}\033[0m')
                 await sleep(config['RELOAD_INTERVAL'])
             else:
                 break
@@ -39,7 +40,7 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
             "sortDescending": 1,
             "gameVersionId": config['gameVersionIds'].get(gameVersionId),
             "gameFlavorId": config['gameFlavorIds'].get(gameFlavorId),
-            'removeAlphas': config['removeAlphas'],
+            'removeAlphas': config['REMOVE_ALPHA'],
         }
         if category != 'mod':
             del params['gameFlavorId']
@@ -56,19 +57,25 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
 
     async def downWriteFile(fileId:str,fileName:str):
         url = '/'.join([config['DOWNLOAD_BASE_URL'],fileId[:-3],fileId[-3:].lstrip('0'),fileName.replace('+','%2B')])
+        filePath = join(config['MOD_SAVE_DIR'] ,category+'s' ,fileName)
         async with session.get(url,proxy=config['PROXY']) as response:
             assert response.status == 200, '服务器下载接口返回码异常'
-            async with aopen(join(config['MOD_SAVE_DIR'] ,category+'s' ,fileName),'wb')as w:
+            if config['FILE_VERIFICATION']:
+                if isfile(filePath):
+                    if await getfilemd5(filePath) == response.headers.get('Etag')[1:-1]:
+                        print(f'\033[36m{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[32m校验完成 \033[36m{fileName} \033[33m{slug}\033[36m')
+                        return '校验成功'
+            async with aopen(filePath,'wb')as w:
                 async for chunk in response.content.iter_chunked(config['CHUNK_SIZE']):
                     await w.write(chunk)
         print(f'\033[36m{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[32m下载完成 \033[36m{fileName} \033[33m{slug}\033[36m')
-        return True
+        return '下载成功'
     
 
     try:
         modid = await getModId()
         fileid,filename = await getModDownUrl(modid)
-        await downWriteFile(fileid,filename)
+        result = await downWriteFile(fileid,filename)
     except IndexError as e:
         print(f'\033[36m{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[31m下载失败 \033[36m{slug} {gameVersionId} {gameFlavorId}\033[31m（没有该版本）\033[36m')
         return [f'失败（没有该版本）',modid]
@@ -79,4 +86,4 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
         print(f'\033[36m{strftime(config["TIME_FORMATE"],localtime())} {gamename}[{category}] : \033[31m下载失败 \033[36m{slug} {gameVersionId} {gameFlavorId}\033[31m（{type(e).__name__}:{e}）\033[36m')
         return [f'失败（{e}）',modid]
     else:
-        return ['成功',filename]
+        return [result,filename]

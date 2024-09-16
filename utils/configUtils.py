@@ -22,7 +22,9 @@ PROXY = ""
 # 查询排序方式(所有方式见下方排序表)
 SORT_FIELD = "Relevancy"
 # 查询排除测试版(true/false)
-removeAlphas = "false"
+REMOVE_ALPHA = "false"
+# 文件存在时开启校验(true/false)
+FILE_VERIFICATION = "true"
 # 文件流大小/byte(越大下载越快，但是内存占用高)
 CHUNK_SIZE = 1024
 # 模组保存目录
@@ -38,11 +40,11 @@ WAIT_TO_DOWN_FILE_NAME = "./待下载文件.csv"
 # 文件下载结果表存放路径与名称
 DOWN_STATE_FILE_NAME = "./下载结果汇总表.csv"
 # 待下载文件信息表表头
-DOWN_FILE_HEADER = ['游戏名(例 minecraft)', '文件类型(例 mod/shader/resourcepack 等)','英文名(例 jei)', '版本(例 1.18.2/1.16.5/1.12.2)', '文件环境(例 neoforge/forge/fabric)']
+DOWN_FILE_HEADER = ['游戏名(例 minecraft)', '文件类型(例 mod/shaderpack/resourcepack 等)','英文名(例 jei)', '版本(例 1.18.2/1.16.5/1.12.2)', '文件环境(例 neoforge/forge/fabric没有则留空)']
 # 文件下载结果表表头
-DOWN_STATE_FILE_HEADER = ['游戏名', '文件类型', '英文名', '版本', '文件环境', '下载结果', '对应文件名/Id']
+DOWN_STATE_FILE_HEADER = ['游戏名', '文件类型', '英文名', '版本', '文件环境', '结果', '对应文件名/Id']
 # 输出文本前缀
-PRINT_PREFIX = "😊 "
+PRINT_PREFIX = "📌 "
 # 输出文本后缀
 PRINT_SUFFIX = " ⚡"
 
@@ -66,7 +68,7 @@ DOWNLOAD_BASE_URL = "https://mediafilez.forgecdn.net/files"
 
 # 类别表
 [categories]
-'shader' = 6552
+'shaderpack' = 6552
 'mod' = 6
 'modpack' = 4471
 'customization' = 4546
@@ -127,7 +129,7 @@ DOWNLOAD_BASE_URL = "https://mediafilez.forgecdn.net/files"
 '''
 
 def saveconfig():
-    print('正在生成默认配置文件...')
+    print('\033[36m正在生成默认配置文件...')
     with open(configFileName,'w',encoding='utf8') as f:
         dump(loads(defaultConfig.strip()),f)
     startfile(abspath(configFileName))
@@ -137,7 +139,7 @@ def saveconfig():
 
 def loadconfig():
     if exists(configFileName):
-        print('正在读取配置文件...')
+        print('\033[36m正在读取配置文件...\033[0m')
         with open(configFileName,'r',encoding='utf8')as f:
             config =  load(f)
         print('\033[32m配置载入成功!\033[0m')

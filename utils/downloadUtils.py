@@ -27,7 +27,7 @@ async def download(fileinfos:list):
                 match category:
                     case 'mod':
                         tasks.append(moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,session))
-                    case 'shader':
+                    case 'shaderpack':
                         tasks.append(moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,session))
                     case 'resourcepack':
                         tasks.append(moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,session))
