@@ -4,6 +4,8 @@
 一键下载工具，旨在自动化下载大众平台CurseForge等其他平台上公开的文件，简化游戏模组以及其他文件的管理和安装过程。通过使用该工具，用户可以高效地获取和安装所有相关的模组或者其他文件，提升整合包制作效率和游戏体验。
 <br>
 A one-click download tool designed to automate the process of downloading publicly available files from platforms like CurseForge and others. It simplifies the management and installation of game mods and other files. By using this tool, users can efficiently acquire and install all related mods or other files, improving the efficiency of modpack creation and enhancing the gaming experience.
+## 下载方式
+- [Release页面下载](https://github.com/764069075/McFileFetcher/releases "查看下载所有版本")
 ## 构建方式
 ### 1.安装 PyInstaller
 首先，你需要安装 PyInstaller。你可以通过 pip 安装它：<br>
