@@ -11,7 +11,7 @@ from utils.fileUtils import getfilemd5
 async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,session,sortField = config['SORT_FIELD']):
 
     async def getModId():
-        print('\033[36m{} {}[{}] : \033[32m已创建程协 \033[36m{} {} \033[33m{} \033[0m'.format(strftime(config['TIME_FORMATE'],localtime()),gamename,category,slug,gameVersionId,gameFlavorId))
+        print('\033[36m{} {}[{}] : \033[32m已创建协程 \033[36m{} {} \033[33m{} \033[0m'.format(strftime(config['TIME_FORMATE'],localtime()),gamename,category,slug,gameVersionId,gameFlavorId))
         params = {
             "gameId": config['gameIds'].get(gamename),
             "index": 0,
