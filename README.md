@@ -4,15 +4,15 @@
 一键下载工具，旨在自动化下载大众平台CurseForge等其他平台上公开的文件，简化游戏模组以及其他文件的管理和安装过程。通过使用该工具，用户可以高效地获取和安装所有相关的模组或者其他文件，提升整合包制作效率和游戏体验。
 <br>
 A one-click download tool designed to automate the process of downloading publicly available files from platforms like CurseForge and others. It simplifies the management and installation of game mods and other files. By using this tool, users can efficiently acquire and install all related mods or other files, improving the efficiency of modpack creation and enhancing the gaming experience.
-## 下载方式
+## 下载方式(Download)
 - [github下载](https://github.com/764069075/McFileFetcher/releases "下载最新版本")
 - [123网盘](https://www.123pan.com/s/MQX9-gn2pd "免登录高速下载所有版本")
-## 详细使用教程
-- [github WIKI](https://github.com/764069075/McFileFetcher/wiki)
-- [csdn WIKI](https://blog.csdn.net/qq_34199015/article/details/142314093)
-- [知乎 WIKI](https://zhuanlan.zhihu.com/p/720532445)
-- [bilibili WIKI](https://www.bilibili.com/opus/978058564062937125)
-## 构建方式
+## 详细使用教程(Wiki)
+- [github](https://github.com/764069075/McFileFetcher/wiki)
+- [csdn](https://blog.csdn.net/qq_34199015/article/details/142314093)
+- [zhihu](https://zhuanlan.zhihu.com/p/720532445)
+- [bilibili](https://www.bilibili.com/opus/978058564062937125)
+## 构建方式(Building)
 ### 1.安装 PyInstaller
 首先，你需要安装 PyInstaller。你可以通过 pip 安装它：<br>
 `pip install pyinstaller`
