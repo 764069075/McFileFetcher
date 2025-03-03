@@ -13,7 +13,7 @@ welcome()
 system('pause')
 
 
-import utils.printUtils
+from utils import printUtils
 from utils.configUtils import config
 from utils.csvUtils import readcsv,resultcsv
 from time import time
