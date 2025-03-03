@@ -22,7 +22,7 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
         }
         for i in range(config['RELOAD_TIMES']):
             try:
-                async with session.get( config['SEARCH_MOD_ID_BASE_URL'], params=params, proxy= config['PROXY'] ) as response:
+                async with session.get( config['SEARCH_MOD_ID_BASE_URL'], params=params ) as response:
                     js = await response.json()
                     assert js['pagination']['totalCount'] > 0,f"未找到这个{category}"
                     return str(js['data'][0]['id'])
@@ -46,7 +46,7 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
             del params['gameFlavorId']
         for i in range(config['RELOAD_TIMES']):
             try:
-                async with session.get('/'.join([config['SEARCH_MOD_FILE_BASE_URL'],modId,'files']),params=params,proxy=config['PROXY'])as response:
+                async with session.get('/'.join([config['SEARCH_MOD_FILE_BASE_URL'],modId,'files']),params=params)as response:
                     js = await response.json()
                     return str(js['data'][0]['id']),js['data'][0]['fileName']
             except ClientConnectorError as e:
@@ -58,7 +58,7 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
     async def downWriteFile(fileId:str,fileName:str):
         url = '/'.join([config['DOWNLOAD_BASE_URL'],fileId[:-3],fileId[-3:].lstrip('0'),fileName.replace('+','%2B')])
         filePath = join(config['MOD_SAVE_DIR'] ,category+'s' ,fileName)
-        async with session.get(url,proxy=config['PROXY']) as response:
+        async with session.get(url) as response:
             assert response.status == 200, '服务器下载接口返回码异常'
             if config['FILE_VERIFICATION']:
                 if isfile(filePath):
