@@ -2,4 +2,4 @@ from aiohttp import ClientSession
 
 
 def initSession():
-    return ClientSession()
+    return ClientSession(trust_env= True)
