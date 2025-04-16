@@ -5,8 +5,8 @@
 <br>
 A one-click download tool designed to automate the process of downloading publicly available files from platforms like CurseForge and others. It simplifies the management and installation of game mods and other files. By using this tool, users can efficiently acquire and install all related mods or other files, improving the efficiency of modpack creation and enhancing the gaming experience.
 <br>
-## 前排提示
-由于CourseForge内置网络防火墙，并且限定非美国地区的ip请求，本程序的所有功能仅支持在美国网络下下载，没有的盆友不用担心，可以使用下方的服务商切换到美国ip地区下载：<br>
+## 前排提示(Tips)
+由于CourseForge内置网络防火墙，并且限定非美国地区的ip请求，**本程序的所有功能仅支持在美国网络下下载**，没有的盆友不用担心，可以使用下方的服务商切换到美国ip地区下载：<br>
 [👓NCloud 10元/月👓](https://xn--clouds-o43k.com/#/register?code=vZePW99Y "")
 - 使用上方的邀请码链接注册，随机获取返券奖励
 - 同时支持Clash/Surge/Shadowrocket/Surfboard/Quantumult X
