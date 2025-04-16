@@ -8,7 +8,7 @@ A one-click download tool designed to automate the process of downloading public
 ## 前排提示
 由于CourseForge内置网络防火墙，并且限定非美国地区的ip请求，本程序的所有功能仅支持在美国网络下下载，没有的盆友不用担心，可以使用下方的服务商切换到美国ip地区下载：<br>
 [👓NCloud 10元/月👓](https://xn--clouds-o43k.com/#/register?code=vZePW99Y "")
-- 使用上方链接注册，随机获取返券奖励
+- 使用上方的邀请码链接注册，随机获取返券奖励
 - 同时支持Clash/Surge/Shadowrocket/Surfboard/Quantumult X
 - 全网超低价，支持UDP转发
 - 1TB/月流量
