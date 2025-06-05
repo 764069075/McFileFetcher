@@ -1,0 +1,11 @@
+[project]
+name = "mcfilefetcher"
+version = "1.2.5"
+description = "一键爬取工具，批量下载Minecraft文件"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiofiles>=24.1.0",
+    "aiohttp>=3.12.9",
+    "tomlkit>=0.13.3",
+]

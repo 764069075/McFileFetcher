@@ -1,7 +1,8 @@
 from csv import writer,reader
 from os.path import exists,abspath
-from os import startfile,system
 from utils.configUtils import config
+from utils.fileUtils import open_file
+from utils.pauseUtils import wait_for_key
 
 
 def readcsv(waitToDownFileName):
@@ -27,9 +28,9 @@ def createcsv(waitToDownFileName):
         w = writer(f)
         w.writerow(config['DOWN_FILE_HEADER'])
 
-    startfile(abspath(waitToDownFileName))
+    open_file(abspath(waitToDownFileName))
     print(f'\033[32m程序已暂停，请前往 {waitToDownFileName} 文件中按照格式填写文件信息（区分大小写）。\033[0m')
-    system('pause')
+    wait_for_key()
     return readcsv(waitToDownFileName)
 
 
@@ -43,12 +44,12 @@ def resultcsv(downStateFileName,results,waste,success,length,fileinfos):
                 w.writerow([f'完成耗时 {waste:.2f}秒 成功 {success} 失败 {length-success}'])
         except PermissionError:
             print(f'\033[31m导出失败：\033[36m在导出文件 {downStateFileName} 时，发现该文件未关闭。\033[33m按任意键重新导出\033[0m')
-            system('pause')
+            wait_for_key()
             continue
         except Exception as e:
             print(f'\033[31m导出失败：\033[36m在导出文件 {downStateFileName} 时，发现未知错误（{e}）。\033[33m按任意键重新导出\033[0m')
-            system('pause')
+            wait_for_key()
             continue
     
     print(f'\033[36m所有文件下载信息已导出到文件 \033[33m{downStateFileName}\033[0m')
-    startfile(abspath(downStateFileName))
+    open_file(abspath(downStateFileName))

@@ -11,7 +11,7 @@ from utils.fileUtils import getfilemd5
 async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,session,sortField = config['SORT_FIELD']):
 
     async def getModId():
-        print('\033[36m{} {}[{}] : \033[32m已创建协程 \033[36m{} {} \033[33m{} \033[0m'.format(strftime(config['TIME_FORMATE'],localtime()),gamename,category,slug,gameVersionId,gameFlavorId))
+        print('\033[36m{} {}[{}] : \033[32m已创建任务 \033[36m{} {} \033[33m{} \033[0m'.format(strftime(config['TIME_FORMATE'],localtime()),gamename,category,slug,gameVersionId,gameFlavorId))
         assert config['gameIds'].get(gamename) != None, f"配置文件字典映射表不存在该游戏({gamename})"
         assert config['categories'].get(category) != None, f"配置文件字典映射表不存在该分类({category})"
         assert config['sortFields'].get(sortField) != None, f"配置文件字典映射表不存在该排序({sortField})"

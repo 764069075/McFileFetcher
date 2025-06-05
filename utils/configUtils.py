@@ -1,4 +1,5 @@
-from os import startfile,system
+from os import system
+from utils.fileUtils import open_file
 from tomlkit import dump,loads,load
 from os.path import exists,abspath
 
@@ -139,9 +140,9 @@ def saveconfig():
     print('\033[36m正在生成默认配置文件...')
     with open(configFileName,'w',encoding='utf8') as f:
         dump(loads(defaultConfig.strip()),f)
-    startfile(abspath(configFileName))
+    open_file(abspath(configFileName))
     print('\033[32m已生成默认配置文件。程序已暂停，您现在可以修改配置信息。\033[0m')
-    system('pause')
+    wait_for_key()
     return loadconfig()
 
 def loadconfig():
