@@ -7,14 +7,17 @@ configFileName = 'config.toml'
 defaultConfig = '''
 ##### 配置文件 #####
 
-#################################################
+##########################################################
 # 文件损坏或内容错误不记得改回
 # 删除本文件，重新运行程序即可
 # 程序已做了模块化开发
-# 欢迎随时提供相关功能代码改进丰富本程序，github主页
+# 欢迎随时提供相关功能代码改进丰富本程序
+# 本工具源码github主页
 # https://github.com/764069075/McFileFetcher
+# 本工具官方文档，关于代理的问题在页面有详细说明
+# https://github.com/764069075/McFileFetcher/wiki/tutorial
 # 请遵循MIT协议，仅供学习参考，一切后果本人概不负责
-#################################################
+###########################################################
 
 ### 基础常量
 # 代理地址(不启用设置为:"",启用需输入字符串地址,例:"http://localhost:7890")
@@ -28,7 +31,7 @@ FILE_VERIFICATION = "true"
 # 文件流大小/byte(越大下载越快，但是内存占用高)
 CHUNK_SIZE = 1024
 # 模组保存目录
-MOD_SAVE_DIR = "Downloaded"
+FILE_SAVE_DIR = "Downloaded"
 # 中断重连次数
 RELOAD_TIMES = 3
 # 每次重连间隔/s
@@ -44,9 +47,9 @@ DOWN_FILE_HEADER = ['游戏名(例 minecraft)', '文件类型(例 mod/shaderpack
 # 文件下载结果表表头
 DOWN_STATE_FILE_HEADER = ['游戏名', '文件类型', '英文名', '版本', '文件环境', '结果', '对应文件名/Id']
 # 输出文本前缀
-PRINT_PREFIX = "📌 "
+PRINT_PREFIX = "> "
 # 输出文本后缀
-PRINT_SUFFIX = " ⚡"
+PRINT_SUFFIX = " <<<"
 
 
 ### 接口链接常量(请勿轻易修改)

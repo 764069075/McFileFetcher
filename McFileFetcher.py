@@ -12,7 +12,7 @@ https://github.com/764069075/McFileFetcher
 
             官方使用手册Wiki地址：
 
-https://github.com/764069075/McFileFetcher/wiki/使用教程
+https://github.com/764069075/McFileFetcher/wiki/tutorial
 ''')
     print('\033[0m')
 welcome()
@@ -37,7 +37,7 @@ async def main():
     failure = length-success
     print(f'下载结束，耗时：{waste:.2f}s 成功：{success} 失败：{failure}\033[0m')
     if failure == length:
-        print('\033[33m【提示】全部失败了? 可以检查配置文件中代理是否正确配置，或者前往官方文档查看解决方案（https://github.com/764069075/McFileFetcher/wiki/使用教程）\033[0m')
+        print('\033[33m【提示】全部失败了? 可以检查配置文件中代理是否正确配置，或者前往官方文档查看解决方案（https://github.com/764069075/McFileFetcher/wiki/tutorial）\033[0m')
     resultcsv(config['DOWN_STATE_FILE_NAME'],results,waste,success,length,fileinfos)
     system('pause')
 

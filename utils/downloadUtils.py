@@ -9,7 +9,7 @@ from asyncio import gather
 def readydirs(fileinfos):
     categories = set([row[1] for row in fileinfos if len(row) > 1])
     for category in categories:
-        makedirs(join(config['MOD_SAVE_DIR'], category+'s'),exist_ok=True)
+        makedirs(join(config['FILE_SAVE_DIR'], category+'s'),exist_ok=True)
 
 
 async def download(fileinfos:list):

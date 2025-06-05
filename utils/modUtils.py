@@ -12,6 +12,9 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
 
     async def getModId():
         print('\033[36m{} {}[{}] : \033[32m已创建协程 \033[36m{} {} \033[33m{} \033[0m'.format(strftime(config['TIME_FORMATE'],localtime()),gamename,category,slug,gameVersionId,gameFlavorId))
+        assert config['gameIds'].get(gamename) != None, f"配置文件字典映射表不存在该游戏({gamename})"
+        assert config['categories'].get(category) != None, f"配置文件字典映射表不存在该分类({category})"
+        assert config['sortFields'].get(sortField) != None, f"配置文件字典映射表不存在该排序({sortField})"
         params = {
             "gameId": config['gameIds'].get(gamename),
             "index": 0,
@@ -33,6 +36,8 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
                 break
 
     async def getModDownUrl(modId:str):
+        assert config['gameVersionIds'].get(gameVersionId) != None, f"配置文件字典映射表不存在该版本({gameVersionId})"
+        assert config['gameFlavorIds'].get(gameFlavorId) != None, f"配置文件字典映射表不存在该环境({gameFlavorId})"
         params = {
             "pageIndex": 0,
             "pageSize": 1,
@@ -57,7 +62,7 @@ async def moddownloadline(gamename,category,slug,gameVersionId,gameFlavorId,sess
 
     async def downWriteFile(fileId:str,fileName:str):
         url = '/'.join([config['DOWNLOAD_BASE_URL'],fileId[:-3],fileId[-3:].lstrip('0'),fileName.replace('+','%2B')])
-        filePath = join(config['MOD_SAVE_DIR'] ,category+'s' ,fileName)
+        filePath = join(config['FILE_SAVE_DIR'] ,category+'s' ,fileName)
         async with session.get(url) as response:
             assert response.status == 200, '服务器下载接口返回码异常'
             if config['FILE_VERIFICATION']:
