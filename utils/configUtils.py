@@ -95,6 +95,9 @@ DOWNLOAD_BASE_URL = "https://mediafilez.forgecdn.net/files"
 
 # 游戏版本表
 [gameVersionIds]
+'1.21.5' = 12934
+'1.21.4' = 12281
+'1.21.2' = 12084
 '1.21.1' = 11779
 '1.21' = 11457
 '1.20.6' = 11198
