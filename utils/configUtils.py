@@ -40,7 +40,7 @@ WAIT_TO_DOWN_FILE_NAME = "./待下载文件.csv"
 # 文件下载结果表存放路径与名称
 DOWN_STATE_FILE_NAME = "./下载结果汇总表.csv"
 # 待下载文件信息表表头
-DOWN_FILE_HEADER = ['游戏名(例 minecraft)', '文件类型(例 mod/shaderpack/resourcepack 等)','英文名(例 jei)', '版本(例 1.18.2/1.16.5/1.12.2)', '文件环境(例 neoforge/forge/fabric没有则留空)']
+DOWN_FILE_HEADER = ['游戏名(例 minecraft)', '文件类型(例 mod/shaderpack/resourcepack 等)','英文名(例 jei)', '版本(例 1.18.2/1.16.5/1.12.2)', '文件环境(例 neoforge/forge/fabric/risugami没有则留空)']
 # 文件下载结果表表头
 DOWN_STATE_FILE_HEADER = ['游戏名', '文件类型', '英文名', '版本', '文件环境', '结果', '对应文件名/Id']
 # 输出文本前缀
@@ -92,6 +92,7 @@ DOWNLOAD_BASE_URL = "https://mediafilez.forgecdn.net/files"
 'forge' = 1
 'fabric' = 4
 'neoforge' = 6
+'risugami' = 9967
 
 # 游戏版本表
 [gameVersionIds]
