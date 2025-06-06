@@ -46,7 +46,14 @@ jobs:
       - name: Verify UPX installation
         shell: bash
         run: |
-          upx --version
+          case "$RUNNER_OS" in
+            Windows)
+              "$UPX_DIR/upx.exe" --version
+              ;;
+            Linux|macOS)
+              upx --version
+              ;;
+          esac
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
