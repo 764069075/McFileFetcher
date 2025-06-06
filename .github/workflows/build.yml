@@ -27,9 +27,9 @@ jobs:
             Windows)
               curl -L -o upx.zip "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-win64.zip"
               unzip upx.zip
-              # 确保解压后的目录结构正确（例如 upx-5.0.1-win64/upx-5.0.1-win64/）
+              mkdir -p upx-win  # 创建目标目录
               mv upx-${UPX_VERSION}-win64/* upx-win/
-              rm -rf upx-${UPX_VERSION}-win64  # 清理中间目录
+              rm -rf upx-${UPX_VERSION}-win64
               echo "$(pwd)/upx-win" >> $GITHUB_PATH
               ;;
             Linux)
