@@ -13,10 +13,10 @@ A one-click download tool designed to automate the process of downloading public
 - 全网超低价，支持UDP转发
 - 1TB/月流量
 ## 下载方式(Download)
-- [github下载](https://github.com/764069075/McFileFetcher/releases "下载最新版本")
+- [github下载](https://github.com/vicuna-main/McFileFetcher/releases "下载最新版本")
 - [123网盘](https://www.123pan.com/s/MQX9-gn2pd "免登录高速下载所有版本")
 ## 详细使用教程(Wiki)
-- [github](https://github.com/764069075/McFileFetcher/wiki/tutorial)
+- [github](https://github.com/vicuna-main/McFileFetcher/wiki/tutorial)
 - [csdn](https://blog.csdn.net/qq_34199015/article/details/142314093)
 - [zhihu](https://zhuanlan.zhihu.com/p/720532445)
 - [bilibili](https://www.bilibili.com/opus/978058564062937125)
