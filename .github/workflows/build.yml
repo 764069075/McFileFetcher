@@ -30,7 +30,7 @@ jobs:
               mkdir -p upx-win  # 创建目标目录
               mv upx-${UPX_VERSION}-win64/* upx-win/
               rm -rf upx-${UPX_VERSION}-win64
-              echo "$(pwd)/upx-win" >> $GITHUB_PATH
+              echo "UPX_DIR=$(pwd)/upx-win" >> $GITHUB_ENV
               ;;
             Linux)
               curl -L -o upx.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-amd64_linux.tar.xz"
@@ -45,8 +45,14 @@ jobs:
 
       - name: Verify UPX installation
         run: |
-          which upx
-          upx --version
+          case "$RUNNER_OS" in
+            Windows)
+              "$UPX_DIR/upx.exe" --version
+              ;;
+            Linux|macOS)
+              upx --version
+              ;;
+          esac
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
