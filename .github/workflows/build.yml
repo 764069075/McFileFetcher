@@ -45,11 +45,17 @@ jobs:
               echo "$(pwd)/upx-${UPX_VERSION}-amd64_linux" >> $GITHUB_PATH
               ;;
             macOS)
+              brew install xz
               curl -L -o upx.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-arm64_macos.tar.xz"
-              tar -xf upx.tar.xz
+              tar -xJf upx.tar.xz
               echo "$(pwd)/upx-${UPX_VERSION}-arm64_macos" >> $GITHUB_PATH
               ;;
           esac
+
+      - name: Verify UPX installation
+        run: |
+          which upx
+          upx --version
 
       - name: Build executable
         run: |
