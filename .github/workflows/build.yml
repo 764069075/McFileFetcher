@@ -70,10 +70,10 @@ jobs:
         run: |
           case "$RUNNER_OS" in
             Windows)
-              pyinstaller --onefile -name McFileFetcher-${{ runner.os }} --upx-dir="upx-win" McFileFetcher.py || { echo "PyInstaller failed on Windows"; exit 1; }
+              pyinstaller --onefile --name McFileFetcher-${{ runner.os }} --upx-dir="upx-win" McFileFetcher.py || { echo "PyInstaller failed on Windows"; exit 1; }
               ;;
             Linux|macOS)
-              pyinstaller --onefile -name McFileFetcher-${{ runner.os }} McFileFetcher.py || { echo "PyInstaller failed on $RUNNER_OS"; exit 1; }
+              pyinstaller --onefile --name McFileFetcher-${{ runner.os }} McFileFetcher.py || { echo "PyInstaller failed on $RUNNER_OS"; exit 1; }
               ;;
           esac
 
