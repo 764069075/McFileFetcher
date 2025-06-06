@@ -1,7 +1,8 @@
 
-# McFileFetcher![img](https://github.com/user-attachments/assets/29c9c3c1-6549-4ae1-907b-ffa151be12cf)
+# McFileFetcher
+![icon-512](https://github.com/user-attachments/assets/901d862c-d1de-40d0-bb8e-11ef9fd3bf8b)
 
-一键下载工具，旨在自动化下载大众平台CurseForge等其他平台上公开的文件，简化游戏模组以及其他文件的管理和安装过程。通过使用该工具，用户可以高效地获取和安装所有相关的模组或者其他文件，提升整合包制作效率和游戏体验。
+跨平台的，一键爬虫下载工具，旨在自动化下载CurseForge等其他平台上公开的文件，简化游戏模组以及其他文件的管理和安装过程。通过使用该工具，用户可以高效地获取和安装所有相关的模组或者其他文件，提升整合包制作效率和游戏体验。
 <br>
 A one-click download tool designed to automate the process of downloading publicly available files from platforms like CurseForge and others. It simplifies the management and installation of game mods and other files. By using this tool, users can efficiently acquire and install all related mods or other files, improving the efficiency of modpack creation and enhancing the gaming experience.
 <br>
@@ -16,7 +17,7 @@ A one-click download tool designed to automate the process of downloading public
 - [github下载](https://github.com/764069075/McFileFetcher/releases "下载最新版本")
 - [123网盘](https://www.123pan.com/s/MQX9-gn2pd "免登录高速下载所有版本")
 ## 详细使用教程(Wiki)
-- [github](https://github.com/764069075/McFileFetcher/wiki)
+- [github](https://github.com/764069075/McFileFetcher/wiki/tutoria)
 - [csdn](https://blog.csdn.net/qq_34199015/article/details/142314093)
 - [zhihu](https://zhuanlan.zhihu.com/p/720532445)
 - [bilibili](https://www.bilibili.com/opus/978058564062937125)
@@ -36,7 +37,7 @@ A one-click download tool designed to automate the process of downloading public
 个性化的配置文件
 ![image](https://github.com/user-attachments/assets/86c94591-39af-4942-b45a-1ef4c060046e)
 ![image](https://github.com/user-attachments/assets/d0f86020-726f-4fad-bfd1-622f0cf48c43)
-高并发的快速下载
+高并发的毫秒级下载
 ![image](https://github.com/user-attachments/assets/688d5f33-e153-4748-bb1b-4117e1b1ba21)
 人性化的信息存留，方便用户后续检查问题
 ![image](https://github.com/user-attachments/assets/bd156dab-dfa6-4ef7-90ef-fe409d302e09)
