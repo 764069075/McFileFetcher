@@ -34,7 +34,8 @@ A one-click download tool designed to automate the process of downloading public
 `your_script.py`：你的 Python 脚本文件名。
 ## 软件截图
 个性化的配置文件
-![image](https://github.com/user-attachments/assets/0564b556-163d-4a15-a2e0-4cdb3371079b)
+![image](https://github.com/user-attachments/assets/86c94591-39af-4942-b45a-1ef4c060046e)
+![image](https://github.com/user-attachments/assets/d0f86020-726f-4fad-bfd1-622f0cf48c43)
 高并发的快速下载
 ![image](https://github.com/user-attachments/assets/688d5f33-e153-4748-bb1b-4117e1b1ba21)
 人性化的信息存留，方便用户后续检查问题
