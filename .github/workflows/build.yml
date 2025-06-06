@@ -51,7 +51,6 @@ jobs:
               brew install upx || { echo "Failed to install UPX"; exit 1; }
               echo "$(brew --prefix)/opt/upx/bin" >> $GITHUB_PATH
               ;;
-              ;;
           esac
 
       - name: Verify UPX installation
