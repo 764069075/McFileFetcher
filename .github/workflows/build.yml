@@ -18,6 +18,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        # 验证文件是否被正确克隆
+        run: |
+          ls -la
+          if [ ! -f "McFileFetcher.py" ]; then
+            echo "McFileFetcher.py not found!" && exit 1
+          fi
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
@@ -47,16 +53,41 @@ jobs:
               echo "$(pwd)/upx-${UPX_VERSION}-amd64_linux" >> $GITHUB_PATH
               ;;
             macOS)
-              brew install xz
+              brew install xz || { echo "Failed to install xz"; exit 1; }
               curl -L -o upx-src.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-src.tar.xz"
-              tar -xJf upx-src.tar.xz
-              cd upx-${UPX_VERSION}
-              # 编译 UPX
-              make -f Makefile.osx
-              # 将编译后的 upx 添加到 PATH
+              tar -xJf upx-src.tar.xz || { echo "Failed to extract upx-src.tar.xz"; exit 1; }
+              # 使用解压后的实际目录名（注意 -src 后缀）
+              cd upx-${UPX_VERSION}-src || { echo "Directory not found"; exit 1; }
+              make -f Makefile.osx || { echo "UPX compilation failed"; exit 1; }
               echo "$(pwd)/src" >> $GITHUB_PATH
               ;;
           esac
+
+      - name: Verify UPX installation
+        run: |
+          which upx
+          upx --version
+
+      - name: Build executable
+        run: |
+          case "$RUNNER_OS" in
+            Windows)
+              pyinstaller --onefile --upx-dir="upx-win" McFileFetcher.py || { echo "PyInstaller failed on Windows"; exit 1; }
+              ;;
+            Linux|macOS)
+              pyinstaller --onefile McFileFetcher.py || { echo "PyInstaller failed on $RUNNER_OS"; exit 1; }
+              ;;
+          esac
+
+      - name: Verify dist directory
+        run: |
+          ls -la dist/
+          if [ ! -d "dist" ]; then
+            echo "dist directory not found!" && exit 1
+          fi
+          if [ -z "$(ls -A dist/)" ]; then
+            echo "dist directory is empty!" && exit 1
+          fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
