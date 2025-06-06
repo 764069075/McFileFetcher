@@ -1,6 +1,6 @@
 def welcome():
-    print('\033[36m')
     print('''
+    
         欢迎使用 McFileFetcher MC文件一键下载工具
 
                   github 开源地址：
@@ -10,8 +10,8 @@ def welcome():
                 官方使用手册Wiki地址：
 
 https://github.com/764069075/McFileFetcher/wiki/tutorial
+
 ''')
-    print('\033[0m')
 welcome()
 
 from utils.pauseUtils import waitforkey
