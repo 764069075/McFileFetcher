@@ -1,6 +1,5 @@
-
-# McFileFetcher
 ![icon-512](https://github.com/user-attachments/assets/901d862c-d1de-40d0-bb8e-11ef9fd3bf8b)
+# McFileFetcher
 
 跨平台的，一键爬虫下载工具，旨在自动化下载CurseForge等其他平台上公开的文件，简化游戏模组以及其他文件的管理和安装过程。通过使用该工具，用户可以高效地获取和安装所有相关的模组或者其他文件，提升整合包制作效率和游戏体验。
 <br>
@@ -34,9 +33,11 @@ A one-click download tool designed to automate the process of downloading public
 `--onefile`：将所有内容打包成一个单独的可执行文件。<br>
 `your_script.py`：你的 Python 脚本文件名。
 ## 软件截图
-个性化的配置文件
+丰富的个性化配置文件
 ![image](https://github.com/user-attachments/assets/86c94591-39af-4942-b45a-1ef4c060046e)
 ![image](https://github.com/user-attachments/assets/d0f86020-726f-4fad-bfd1-622f0cf48c43)
+美化的彩色输出，丰富的文本提示
+![image](https://github.com/user-attachments/assets/fc115170-e22e-413b-a96d-b880b301bb94)
 高并发的毫秒级下载
 ![image](https://github.com/user-attachments/assets/688d5f33-e153-4748-bb1b-4117e1b1ba21)
 人性化的信息存留，方便用户后续检查问题
