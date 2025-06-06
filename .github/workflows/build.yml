@@ -1,41 +1,83 @@
-name: Build EXE with PyInstaller
+name: Multi-platform Build with PyInstaller
 
 on:
   push:
     branches:
-      - 1.x.x  # 或你想要触发的分支
+      - 1.x.x
 
 jobs:
   build:
-    runs-on: windows-latest
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python-version: ['3.12.7']
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12.7'
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller tomlkit aiofiles aiohttp
-          
-      - name: Install UPX
-        run: |
-          Invoke-WebRequest -Uri "https://github.com/upx/upx/releases/download/v3.96/upx-3.96-win64.zip" -OutFile "upx.zip"
-          Expand-Archive -Path "upx.zip" -DestinationPath "C:\tools\upx"
-          echo "C:\tools\upx" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          
-      - name: Build EXE with PyInstaller
-        run: |
-          pyinstaller --onefile --upx-dir "C:\tools\upx" McFileFetcher.py
 
-      - name: Upload EXE artifact
+      - name: Install UPX
+        shell: bash
+        run: |
+          UPX_VERSION="4.2.1"
+          case "$RUNNER_OS" in
+            Windows)
+              curl -L -o upx.zip "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-win64.zip"
+              unzip upx.zip
+              mkdir -p upx-win
+              mv upx-${UPX_VERSION}-win64/* upx-win/
+              echo "$(pwd)/upx-win" >> $GITHUB_PATH
+              ;;
+            Linux)
+              curl -L -o upx.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-amd64_linux.tar.xz"
+              tar -xf upx.tar.xz
+              echo "$(pwd)/upx-${UPX_VERSION}-amd64_linux" >> $GITHUB_PATH
+              ;;
+            macOS)
+              curl -L -o upx.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-arm64_macos.tar.xz"
+              tar -xf upx.tar.xz
+              echo "$(pwd)/upx-${UPX_VERSION}-arm64_macos" >> $GITHUB_PATH
+              ;;
+          esac
+
+      - name: Build executable
+        run: |
+          case "$RUNNER_OS" in
+            Windows)
+              pyinstaller --onefile --upx-dir="upx-win" McFileFetcher.py
+              ;;
+            Linux|macOS)
+              pyinstaller --onefile McFileFetcher.py
+              ;;
+          esac
+
+      - name: Rename artifacts
+        run: |
+          case "$RUNNER_OS" in
+            Windows)
+              mv dist/McFileFetcher.exe dist/McFileFetcher-windows-amd64.exe
+              ;;
+            Linux)
+              mv dist/McFileFetcher dist/McFileFetcher-linux-amd64
+              ;;
+            macOS)
+              mv dist/McFileFetcher dist/McFileFetcher-macos-arm64
+              ;;
+          esac
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: McFileFetcher
-          path: dist/McFileFetcher.exe
-
+          name: mcfilefetcher-${{ runner.os }}-binaries
+          path: dist/
