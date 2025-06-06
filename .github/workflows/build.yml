@@ -78,6 +78,7 @@ jobs:
           esac
 
       - name: Verify dist directory
+        shell: bash
         run: |
           ls -la dist/
           if [ ! -d "dist" ]; then
