@@ -37,8 +37,9 @@ jobs:
             Windows)
               curl -L -o upx.zip "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-win64.zip"
               unzip upx.zip
-              mkdir -p upx-win
-              mv upx-${UPX_VERSION}-win64/* upx-win/
+              # 确保解压后的目录结构正确（例如 upx-5.0.1-win64/upx-5.0.1-win64/）
+              mv upx-${UPX_VERSION}-win64/upx-${UPX_VERSION}-win64/* upx-win/
+              rm -rf upx-${UPX_VERSION}-win64  # 清理中间目录
               echo "$(pwd)/upx-win" >> $GITHUB_PATH
               ;;
             Linux)
@@ -47,13 +48,9 @@ jobs:
               echo "$(pwd)/upx-${UPX_VERSION}-amd64_linux" >> $GITHUB_PATH
               ;;
             macOS)
-              brew install xz || { echo "Failed to install xz"; exit 1; }
-              curl -L -o upx-src.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-src.tar.xz"
-              tar -xJf upx-src.tar.xz || { echo "Failed to extract upx-src.tar.xz"; exit 1; }
-              # 使用解压后的实际目录名（注意 -src 后缀）
-              cd upx-${UPX_VERSION}-src || { echo "Directory not found"; exit 1; }
-              make -f Makefile.osx || { echo "UPX compilation failed"; exit 1; }
-              echo "$(pwd)/src" >> $GITHUB_PATH
+              brew install upx || { echo "Failed to install UPX"; exit 1; }
+              echo "$(brew --prefix)/opt/upx/bin" >> $GITHUB_PATH
+              ;;
               ;;
           esac
 
