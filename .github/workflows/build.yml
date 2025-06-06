@@ -18,12 +18,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        # 验证文件是否被正确克隆
-        run: |
-          ls -la
-          if [ ! -f "McFileFetcher.py" ]; then
-            echo "McFileFetcher.py not found!" && exit 1
-          fi
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
