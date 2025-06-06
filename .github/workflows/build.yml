@@ -46,7 +46,6 @@ jobs:
       - name: Verify UPX installation
         shell: bash
         run: |
-          which upx
           upx --version
 
       - name: Set up Python ${{ matrix.python-version }}
