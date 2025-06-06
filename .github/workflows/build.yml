@@ -66,6 +66,7 @@ jobs:
           pip install pyinstaller tomlkit aiofiles aiohttp
 
       - name: Build executable
+        shell: bash
         run: |
           case "$RUNNER_OS" in
             Windows)
