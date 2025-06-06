@@ -48,39 +48,22 @@ jobs:
               ;;
             macOS)
               brew install xz
-              curl -L -o upx.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-arm64_macos.tar.xz"
+              # 添加重试机制
+              for i in {1..3}; do
+                curl -L -o upx.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-arm64_macos.tar.xz"
+                # 验证文件大小
+                if [ $(stat -f%z upx.tar.xz) -gt 102400 ]; then
+                  break
+                elif [ $i -eq 3 ]; then
+                  echo "❌ UPX download failed after 3 attempts"
+                  exit 1
+                else
+                  echo "⚠️ Download attempt $i failed, retrying..."
+                  sleep 5
+                fi
+              done
               tar -xJf upx.tar.xz
               echo "$(pwd)/upx-${UPX_VERSION}-arm64_macos" >> $GITHUB_PATH
-              ;;
-          esac
-
-      - name: Verify UPX installation
-        run: |
-          which upx
-          upx --version
-
-      - name: Build executable
-        run: |
-          case "$RUNNER_OS" in
-            Windows)
-              pyinstaller --onefile --upx-dir="upx-win" McFileFetcher.py || { echo "PyInstaller failed on Windows"; exit 1; }
-              ;;
-            Linux|macOS)
-              pyinstaller --onefile McFileFetcher.py || { echo "PyInstaller failed on $RUNNER_OS"; exit 1; }
-              ;;
-          esac
-
-      - name: Rename artifacts
-        run: |
-          case "$RUNNER_OS" in
-            Windows)
-              mv dist/McFileFetcher.exe dist/McFileFetcher-windows-amd64.exe
-              ;;
-            Linux)
-              mv dist/McFileFetcher dist/McFileFetcher-linux-amd64
-              ;;
-            macOS)
-              mv dist/McFileFetcher dist/McFileFetcher-macos-arm64
               ;;
           esac
 
