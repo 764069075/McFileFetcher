@@ -15,9 +15,9 @@ defaultConfig = '''
 # 程序已做了模块化开发
 # 欢迎随时提供相关功能代码改进丰富本程序
 # 本工具源码github主页
-# https://github.com/764069075/McFileFetcher
+# https://github.com/vicuna-main/McFileFetcher
 # 本工具官方文档，关于代理的问题在页面有详细说明
-# https://github.com/764069075/McFileFetcher/wiki/tutorial
+# https://github.com/vicuna-main/McFileFetcher/wiki/tutorial
 # 请遵循MIT协议，仅供学习参考，一切后果本人概不负责
 ###########################################################
 

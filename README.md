@@ -25,7 +25,7 @@ A one-click download tool designed to automate the process of downloading public
 首先，在本地安装uv包管理库：<br>
 `pip install uv`<br>
 随后，克隆本仓库：<br>
-`git clone https://github.com/764069075/McFileFetcher.git`<br>
+`git clone https://github.com/vicuna-main/McFileFetcher.git`<br>
 然后，运行uv安装依赖库：<br>
 `uv sync`<br>
 最后，激活虚拟环境（Windows）：<br>
