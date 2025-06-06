@@ -1,7 +1,8 @@
 from os import system
-from utils.fileUtils import open_file
+from utils.fileUtils import openfile
 from tomlkit import dump,loads,load
 from os.path import exists,abspath
+from utils.pauseUtils import waitforkey
 
 
 configFileName = 'config.toml'
@@ -140,9 +141,9 @@ def saveconfig():
     print('\033[36m正在生成默认配置文件...')
     with open(configFileName,'w',encoding='utf8') as f:
         dump(loads(defaultConfig.strip()),f)
-    open_file(abspath(configFileName))
+    openfile(abspath(configFileName))
     print('\033[32m已生成默认配置文件。程序已暂停，您现在可以修改配置信息。\033[0m')
-    wait_for_key()
+    waitforkey()
     return loadconfig()
 
 def loadconfig():

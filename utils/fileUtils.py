@@ -11,7 +11,7 @@ async def getfilemd5(filePath):
         filebytes = await f.read()
     return md5(filebytes).hexdigest()
 
-def open_file(filepath):
+def openfile(filepath):
     try:
         if plat == "Windows":
             run(['start', '', filepath], shell=True)

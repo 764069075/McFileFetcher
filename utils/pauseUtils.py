@@ -1,7 +1,7 @@
 from os import name, system
 
 
-def wait_for_key():
+def waitforkey():
     if name == 'nt':
         system('pause')
     else:
