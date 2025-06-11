@@ -36,7 +36,7 @@ A one-click download tool designed to automate the process of downloading public
 - 同时支持Clash/Surge/Shadowrocket/Surfboard/Quantumult X
 - 全网超低价，支持UDP转发
 - 1TB/月流量
-- ## 软件截图
+## 软件截图(Screenshots)
 美化的彩色输出，丰富的文本提示
 ![image](https://github.com/user-attachments/assets/fc115170-e22e-413b-a96d-b880b301bb94)
 高并发的毫秒级下载
