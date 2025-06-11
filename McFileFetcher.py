@@ -3,11 +3,11 @@ def welcome():
     
         欢迎使用 McFileFetcher MC文件一键下载工具
 
-                  github 开源地址：
+                    github 开源地址：
 
       https://github.com/vicuna-main/McFileFetcher
 
-                官方使用手册Wiki地址：
+                 官方使用手册Wiki地址：
 
 https://github.com/vicuna-main/McFileFetcher/wiki/tutorial
 

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/901d862c-d1de-40d0-bb8e-11ef9fd3bf8b" alt="McFileFetcher Logo" width="66%" style="border-radius: 32px">
+  <img src="https://github.com/user-attachments/assets/8a140455-828d-4898-bdbf-787f22865070" alt="McFileFetcher Logo" width="66%" style="border-radius: 32px">
   <h1>McFileFetcher</h1>
   <p>
     <strong>
@@ -7,6 +7,14 @@
     </strong>
   </p>
 </div>
+<p align="center">
+  <a href="https://github.com/vicuna-main/McFileFetcher"><img src="https://img.shields.io/github/stars/vicuna-main/McFileFetcher?style=flat-square" alt="Star" style="border-radius: 4px"></a>
+  <a href="https://github.com/vicuna-main/McFileFetcher"><img src="https://img.shields.io/github/stars/vicuna-main/McFileFetcher?style=flat-square" alt="Star" style="border-radius: 4px"></a>
+  <a href="https://github.com/vicuna-main/McFileFetcher/blob/main/LICENSE"><img src="https://img.shields.io/github/license/vicuna-main/McFileFetcher?style=flat-square" alt="License" style="border-radius: 4px"></a>
+  <a href="https://github.com/vicuna-main/McFileFetcher/releases"><img src="https://img.shields.io/github/downloads/vicuna-main/McFileFetcher/total?style=flat-square" alt="Downloads" style="border-radius: 4px"></a>
+  <a href="https://github.com/vicuna-main/McFileFetcher/releases"><img src="https://img.shields.io/github/v/release/vicuna-main/McFileFetcher?style=flat-square" alt="Version" style="border-radius: 4px"></a>
+  <a href="https://github.com/vicuna-main/McFileFetcher/actions"><img src="https://img.shields.io/github/actions/workflow/status/vicuna-main/McFileFetcher/build.yml?style=flat-square" alt="Version" style="border-radius: 4px"></a>
+</p>
 <h3 align="center">
   <a href="https://github.com/vicuna-main/McFileFetcher/wiki/tutorial">Tutorial</a>
   <span> · </span>
