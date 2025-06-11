@@ -9,7 +9,6 @@
 </div>
 <p align="center">
   <a href="https://github.com/vicuna-main/McFileFetcher"><img src="https://img.shields.io/github/stars/vicuna-main/McFileFetcher?style=flat-square" alt="Star" style="border-radius: 4px"></a>
-  <a href="https://github.com/vicuna-main/McFileFetcher"><img src="https://img.shields.io/github/stars/vicuna-main/McFileFetcher?style=flat-square" alt="Star" style="border-radius: 4px"></a>
   <a href="https://github.com/vicuna-main/McFileFetcher/blob/main/LICENSE"><img src="https://img.shields.io/github/license/vicuna-main/McFileFetcher?style=flat-square" alt="License" style="border-radius: 4px"></a>
   <a href="https://github.com/vicuna-main/McFileFetcher/releases"><img src="https://img.shields.io/github/downloads/vicuna-main/McFileFetcher/total?style=flat-square" alt="Downloads" style="border-radius: 4px"></a>
   <a href="https://github.com/vicuna-main/McFileFetcher/releases"><img src="https://img.shields.io/github/v/release/vicuna-main/McFileFetcher?style=flat-square" alt="Version" style="border-radius: 4px"></a>
@@ -69,12 +68,12 @@ A one-click download tool designed to automate the process of downloading public
 `--onefile`：将所有内容打包成一个单独的可执行文件。<br>
 `your_script.py`：你的 Python 脚本文件名。
 ## 软件截图
-丰富的个性化配置文件
-![image](https://github.com/user-attachments/assets/86c94591-39af-4942-b45a-1ef4c060046e)
-![image](https://github.com/user-attachments/assets/d0f86020-726f-4fad-bfd1-622f0cf48c43)
 美化的彩色输出，丰富的文本提示
 ![image](https://github.com/user-attachments/assets/fc115170-e22e-413b-a96d-b880b301bb94)
 高并发的毫秒级下载
 ![image](https://github.com/user-attachments/assets/688d5f33-e153-4748-bb1b-4117e1b1ba21)
+丰富的个性化配置文件
+![image](https://github.com/user-attachments/assets/86c94591-39af-4942-b45a-1ef4c060046e)
+![image](https://github.com/user-attachments/assets/d0f86020-726f-4fad-bfd1-622f0cf48c43)
 人性化的信息存留，方便用户后续检查问题
 ![image](https://github.com/user-attachments/assets/bd156dab-dfa6-4ef7-90ef-fe409d302e09)
