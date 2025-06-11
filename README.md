@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/8a140455-828d-4898-bdbf-787f22865070" alt="McFileFetcher Logo" width="66%" style="border-radius: 32px">
+  <img src="https://github.com/user-attachments/assets/8a140455-828d-4898-bdbf-787f22865070" alt="McFileFetcher Logo" width="50%" style="border-radius: 32px">
   <h1>McFileFetcher</h1>
   <p>
     <strong>
