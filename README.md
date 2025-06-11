@@ -36,6 +36,16 @@ A one-click download tool designed to automate the process of downloading public
 - 同时支持Clash/Surge/Shadowrocket/Surfboard/Quantumult X
 - 全网超低价，支持UDP转发
 - 1TB/月流量
+- ## 软件截图
+美化的彩色输出，丰富的文本提示
+![image](https://github.com/user-attachments/assets/fc115170-e22e-413b-a96d-b880b301bb94)
+高并发的毫秒级下载
+![image](https://github.com/user-attachments/assets/688d5f33-e153-4748-bb1b-4117e1b1ba21)
+丰富的个性化配置文件
+![image](https://github.com/user-attachments/assets/86c94591-39af-4942-b45a-1ef4c060046e)
+![image](https://github.com/user-attachments/assets/d0f86020-726f-4fad-bfd1-622f0cf48c43)
+人性化的信息存留，方便用户后续检查问题
+![image](https://github.com/user-attachments/assets/bd156dab-dfa6-4ef7-90ef-fe409d302e09)
 ## 下载方式(Download)
 - [github下载](https://github.com/vicuna-main/McFileFetcher/releases "下载最新版本")
 - [123网盘](https://www.123pan.com/s/MQX9-gn2pd "免登录高速下载所有版本")
@@ -67,13 +77,3 @@ A one-click download tool designed to automate the process of downloading public
 #### 解释参数：
 `--onefile`：将所有内容打包成一个单独的可执行文件。<br>
 `your_script.py`：你的 Python 脚本文件名。
-## 软件截图
-美化的彩色输出，丰富的文本提示
-![image](https://github.com/user-attachments/assets/fc115170-e22e-413b-a96d-b880b301bb94)
-高并发的毫秒级下载
-![image](https://github.com/user-attachments/assets/688d5f33-e153-4748-bb1b-4117e1b1ba21)
-丰富的个性化配置文件
-![image](https://github.com/user-attachments/assets/86c94591-39af-4942-b45a-1ef4c060046e)
-![image](https://github.com/user-attachments/assets/d0f86020-726f-4fad-bfd1-622f0cf48c43)
-人性化的信息存留，方便用户后续检查问题
-![image](https://github.com/user-attachments/assets/bd156dab-dfa6-4ef7-90ef-fe409d302e09)
