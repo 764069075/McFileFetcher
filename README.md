@@ -1,10 +1,27 @@
-![icon-512](https://github.com/user-attachments/assets/901d862c-d1de-40d0-bb8e-11ef9fd3bf8b)
-# McFileFetcher
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/901d862c-d1de-40d0-bb8e-11ef9fd3bf8b" alt="McFileFetcher Logo" width="66%" style="border-radius: 32px">
+  <h1>McFileFetcher</h1>
+  <p>
+    <strong>
+      一个快速的CurseForge爬虫工具
+    </strong>
+  </p>
+</div>
+<h3 align="center">
+  <a href="https://github.com/vicuna-main/McFileFetcher/wiki/tutorial">Tutorial</a>
+  <span> · </span>
+  <a href="https://github.com/vicuna-main/McFileFetcher/releases">Download</a>
+</h3>
 
 跨平台的，一键爬虫下载工具，旨在自动化下载CurseForge等其他平台上公开的文件，简化游戏模组以及其他文件的管理和安装过程。通过使用该工具，用户可以高效地获取和安装所有相关的模组或者其他文件，提升整合包制作效率和游戏体验。
 <br>
 A one-click download tool designed to automate the process of downloading publicly available files from platforms like CurseForge and others. It simplifies the management and installation of game mods and other files. By using this tool, users can efficiently acquire and install all related mods or other files, improving the efficiency of modpack creation and enhancing the gaming experience.
 <br>
+## Star History
+<div align="center">
+  <img src="https://api.star-history.com/svg?repos=vicuna-main/McFileFetcher&type=Date" alt="McFileFetcher Logo" width="100%" style="border-radius: 32px">
+</div>
+
 ## 前排提示(Tips)
 由于CourseForge内置网络防火墙，并且限定非美国地区的ip请求，**本程序的所有功能仅支持在美国网络下下载**，没有的盆友不用担心，可以使用下方的服务商切换到美国ip地区下载：<br>
 [👓NCloud 10元/月👓](https://xn--clouds-o43k.com/#/register?code=vZePW99Y "")
